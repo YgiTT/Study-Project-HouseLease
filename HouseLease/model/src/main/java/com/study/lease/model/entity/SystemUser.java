@@ -1,7 +1,7 @@
 package com.study.lease.model.entity;
 
-import com.atguigu.lease.model.enums.BaseStatus;
-import com.atguigu.lease.model.enums.SystemUserType;
+//import com.atguigu.lease.model.enums.BaseStatus;
+//import com.atguigu.lease.model.enums.SystemUserType;
 import com.baomidou.mybatisplus.annotation.FieldStrategy;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -28,9 +28,9 @@ public class SystemUser extends BaseEntity {
     @TableField(value = "name")
     private String name;
 
-    @Schema(description = "用户类型")
-    @TableField(value = "type")
-    private SystemUserType type;
+//    @Schema(description = "用户类型")
+//    @TableField(value = "type")
+//    private SystemUserType type;
 
     @Schema(description = "手机号码")
     @TableField(value = "phone")
@@ -48,9 +48,9 @@ public class SystemUser extends BaseEntity {
     @TableField(value = "post_id")
     private Long postId;
 
-    @Schema(description = "账号状态")
-    @TableField(value = "status")
-    private BaseStatus status;
+//    @Schema(description = "账号状态")
+//    @TableField(value = "status")
+//    private BaseStatus status;
 
 
 }

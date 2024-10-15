@@ -1,6 +1,6 @@
 package com.study.lease.model.entity;
 
-import com.atguigu.lease.model.enums.AppointmentStatus;
+//import com.atguigu.lease.model.enums.AppointmentStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -39,7 +39,7 @@ public class ViewAppointment extends BaseEntity {
     @TableField(value = "additional_info")
     private String additionalInfo;
 
-    @Schema(description = "预约状态")
-    @TableField(value = "appointment_status")
-    private AppointmentStatus appointmentStatus;
+//    @Schema(description = "预约状态")
+//    @TableField(value = "appointment_status")
+//    private AppointmentStatus appointmentStatus;
 }

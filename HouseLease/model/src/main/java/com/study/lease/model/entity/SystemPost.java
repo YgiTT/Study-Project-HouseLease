@@ -1,6 +1,6 @@
 package com.study.lease.model.entity;
 
-import com.atguigu.lease.model.enums.BaseStatus;
+//import com.atguigu.lease.model.enums.BaseStatus;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -29,9 +29,9 @@ public class SystemPost extends BaseEntity {
     @TableField(value = "description")
     private String description;
 
-    @Schema(description = "岗位状态")
-    @TableField(value = "status")
-    private BaseStatus status;
+//    @Schema(description = "岗位状态")
+//    @TableField(value = "status")
+//    private BaseStatus status;
 
 
 }

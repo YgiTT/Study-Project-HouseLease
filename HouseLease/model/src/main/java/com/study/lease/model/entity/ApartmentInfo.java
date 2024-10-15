@@ -1,8 +1,8 @@
 package com.study.lease.model.entity;
 
-import com.atguigu.lease.model.enums.ReleaseStatus;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.study.lease.model.enums.ReleaseStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 

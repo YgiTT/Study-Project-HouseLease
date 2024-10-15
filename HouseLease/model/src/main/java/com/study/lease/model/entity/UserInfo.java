@@ -1,6 +1,6 @@
 package com.study.lease.model.entity;
 
-import com.atguigu.lease.model.enums.BaseStatus;
+//import com.atguigu.lease.model.enums.BaseStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -33,9 +33,9 @@ public class UserInfo extends BaseEntity {
     @TableField(value = "nickname")
     private String nickname;
 
-    @Schema(description = "账号状态")
-    @TableField(value = "status")
-    private BaseStatus status;
+//    @Schema(description = "账号状态")
+//    @TableField(value = "status")
+//    private BaseStatus status;
 
 
 }
