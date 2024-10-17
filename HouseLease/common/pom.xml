@@ -9,8 +9,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+
     <artifactId>common</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+<!--    <version>0.0.1-SNAPSHOT</version>-->
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -22,7 +23,7 @@
         <!--mybatis-plus-->
         <dependency>
             <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
         </dependency>
 
         <!--mysql驱动-->
@@ -35,8 +36,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
         </dependency>
+
     </dependencies>
 
 </project>

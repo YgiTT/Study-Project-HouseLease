@@ -11,6 +11,7 @@
 
     <artifactId>web</artifactId>
     <packaging>pom</packaging>
+
     <modules>
         <module>web-admin</module>
         <module>web-app</module>
@@ -23,6 +24,7 @@
     </properties>
 
     <dependencies>
+        <!--其他模块-->
         <dependency>
             <groupId>com.project</groupId>
             <artifactId>common</artifactId>
@@ -33,30 +35,23 @@
             <artifactId>model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
         <!--包含spring web相关依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
         <!--包含spring test相关依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!--knife4j-->
-        <dependency>
-            <groupId>com.github.xiaoymin</groupId>
-            <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
-        </dependency>
-        <!--lombok用于简化实体类开发-->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
+
     </dependencies>
 
+    <!-- Spring Boot Maven插件，用于打包可执行的JAR文件 -->
     <build>
         <plugins>
             <plugin>

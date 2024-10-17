@@ -5,17 +5,23 @@
 
     <groupId>com.project</groupId>
     <artifactId>houselease</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <version>0.0.1-SNAPSHOT</version>
     <!--	<name>houseLease</name>-->
     <description>Study_Project-houseLease</description>
+
+
+    <modules>
+        <module>model</module>
+        <module>common</module>
+        <module>web</module>
+    </modules>
 
     <!-- 继承Spring Boot父项目 -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.3.4</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <!-- 注意：直接替换pom文件中原有的properties -->
@@ -39,7 +45,7 @@
             <!--官方文档：https://baomidou.com/pages/bab2db/ -->
             <dependency>
                 <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
             </dependency>
             <!--knife4j文档-->
@@ -92,11 +98,7 @@
         </dependencies>
     </dependencyManagement>
 
-    <modules>
-        <module>model</module>
-        <module>common</module>
-        <module>web</module>
-    </modules>
+
 
 
 </project>
