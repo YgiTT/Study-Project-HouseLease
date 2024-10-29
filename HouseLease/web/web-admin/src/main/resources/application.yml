@@ -16,8 +16,8 @@ spring:
       minimum-idle: 10 #最小空闲连接数量
       pool-name: LeasePool
 
-  #MybatisPlus
-  mybatis-plus:
-    configuration:
-      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印sql语句
+#MybatisPlus
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印sql语句
 
