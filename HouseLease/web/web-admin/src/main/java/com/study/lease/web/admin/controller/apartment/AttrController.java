@@ -5,10 +5,13 @@ import com.study.lease.model.entity.AttrKey;
 import com.study.lease.model.entity.AttrValue;
 import com.study.lease.web.admin.service.AttrKeyService;
 import com.study.lease.web.admin.service.AttrValueService;
+import com.study.lease.web.admin.vo.attr.AttrKeyVo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @Author Ryan Yan
@@ -56,6 +59,14 @@ public class AttrController {
         return Result.ok();
     }
 
+
+    @Operation(summary = "查詢全部属性名称和属性值列表")
+    @GetMapping("list")
+    public Result<List<AttrKeyVo>> listAttrInfo(){
+        List<AttrKeyVo> attrKeyVos = attrKeyService.listAttrInfo();
+        return  Result.ok(attrKeyVos);
+
+    }
 
 
 
