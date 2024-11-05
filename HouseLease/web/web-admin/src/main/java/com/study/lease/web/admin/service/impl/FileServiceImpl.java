@@ -31,6 +31,7 @@ public class FileServiceImpl implements FileService {
         try {
             //获取bucket
             String bucketName = minioProperties.getBucketName();
+            String endpoint = minioProperties.getEndpoint();
             boolean bucketExists = minioClient.bucketExists(BucketExistsArgs.builder().bucket(bucketName).build());
             //创建bucket
             if (!bucketExists) {
@@ -46,14 +47,14 @@ public class FileServiceImpl implements FileService {
                     + UUID.randomUUID() + "-" + file.getOriginalFilename();
             minioClient.putObject(
                     PutObjectArgs.builder()
-                            .bucket(minioProperties.getBucketName())
+                            .bucket(bucketName)
                             .stream(file.getInputStream(), file.getSize(), -1)
                             .object(fileName)
                             .contentType(file.getContentType())
                             .build()
             );
             //返回上传文件的url
-            return String.join("/", minioProperties.getEndpoint(), bucketName, fileName);
+            return String.join("/", endpoint, bucketName, fileName);
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException(e.getMessage());
