@@ -16,6 +16,11 @@ spring:
       minimum-idle: 10 #最小空闲连接数量
       pool-name: LeasePool
 
+# Knife4
+springdoc:
+  # 默认是false，需要设置为true
+  default-flat-param-object: true
+
 #MybatisPlus
 mybatis-plus:
   configuration:
