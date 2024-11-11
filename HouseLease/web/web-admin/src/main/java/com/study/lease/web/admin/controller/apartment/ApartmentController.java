@@ -1,9 +1,14 @@
 package com.study.lease.web.admin.controller.apartment;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.study.lease.common.result.Result;
+import com.study.lease.model.entity.ApartmentInfo;
+import com.study.lease.model.enums.ReleaseStatus;
 import com.study.lease.web.admin.service.ApartmentInfoService;
+import com.study.lease.web.admin.vo.apartment.ApartmentDetailVo;
 import com.study.lease.web.admin.vo.apartment.ApartmentItemVo;
 import com.study.lease.web.admin.vo.apartment.ApartmentQueryVo;
 import com.study.lease.web.admin.vo.apartment.ApartmentSubmitVo;
@@ -11,6 +16,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @Author Ryan Yan
@@ -40,6 +47,43 @@ public class ApartmentController {
         IPage<ApartmentItemVo> result = apartmentInfoService.pageItem(page, queryVo);
         return Result.ok(result);
     }
+
+    @Operation(summary = "根据ID获取公寓详细信息")
+    @GetMapping("getDetailById")
+    public Result<ApartmentDetailVo> getDetailById(@RequestParam Long id){
+        ApartmentDetailVo apartmentDetailVo = apartmentInfoService.getDetailById(id);
+        return Result.ok(apartmentDetailVo);
+    }
+
+
+    @Operation(summary = "根据ID删除公寓")
+    @DeleteMapping("deleteById")
+    public Result deleteById(Long id){
+        apartmentInfoService.removeApartmentById(id);
+        return Result.ok();
+    }
+
+    @Operation(summary = "根据id修改公寓发布状态")
+    @PostMapping("updateReleaseStatusById")
+    public Result updateReleaseStatusById(@RequestParam Long id, @RequestParam ReleaseStatus status){
+        LambdaUpdateWrapper<ApartmentInfo> updateWrapper = new LambdaUpdateWrapper<>();
+        updateWrapper.eq(ApartmentInfo::getId,id);
+        updateWrapper.set(ApartmentInfo::getIsRelease,status);
+        apartmentInfoService.update(updateWrapper);
+        return Result.ok();
+    }
+
+
+    @Operation(summary = "根据区县id查询公寓消息列表")
+    @GetMapping("listInfoByDistrictId")
+    public Result<List<ApartmentInfo>> listInfoByDistrictId(@RequestParam Long districtId){
+        LambdaQueryWrapper<ApartmentInfo> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(ApartmentInfo::getDistrictId,districtId);
+        List<ApartmentInfo> list = apartmentInfoService.list(queryWrapper);
+        return Result.ok(list);
+    }
+
+
 
 
 }

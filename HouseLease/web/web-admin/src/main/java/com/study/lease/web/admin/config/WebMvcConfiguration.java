@@ -6,7 +6,6 @@ package com.study.lease.web.admin.config;
  */
 
 import com.study.lease.web.admin.config.converter.StringToBaseEnumConverterFactory;
-import com.study.lease.web.admin.config.converter.StringToItemTypeConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;

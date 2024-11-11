@@ -18,5 +18,10 @@ public class GlobalExceptionHandler {
         return Result.fail(e.getMessage());
     }
 
+    @ExceptionHandler(LeaseException.class)
+    public Result handle(LeaseException e){
+        e.printStackTrace();
+        return Result.fail(e.getCode(),e.getMessage());
+    }
 
 }

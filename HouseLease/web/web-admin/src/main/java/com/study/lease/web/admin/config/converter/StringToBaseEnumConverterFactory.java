@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * springmvc->enum 类型转换工厂
+ *  API参数类型转换
+ *  前端-》后端
  * @Author Ryan Yan
  * @Since 2024/10/28 17:50
  */
