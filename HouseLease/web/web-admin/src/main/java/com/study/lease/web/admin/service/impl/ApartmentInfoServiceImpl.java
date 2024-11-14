@@ -16,7 +16,6 @@ import com.study.lease.web.admin.vo.apartment.ApartmentQueryVo;
 import com.study.lease.web.admin.vo.apartment.ApartmentSubmitVo;
 import com.study.lease.web.admin.vo.fee.FeeValueVo;
 import com.study.lease.web.admin.vo.graph.GraphVo;
-import io.swagger.v3.oas.annotations.callbacks.Callback;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -72,7 +71,7 @@ public class ApartmentInfoServiceImpl extends ServiceImpl<ApartmentInfoMapper, A
         this.saveOrUpdate(apartmentSubmitVo);
         //获取插入或更新后的id
         Long id = apartmentSubmitVo.getId();
-        //若是新增则：先根据id删除关联的信息并重新插入/更新
+        //若是更新则：先根据id删除关联的信息并重新插入/更新
         if (isUpdate) {
             this.removeApartmentRelevance(id);
         }
@@ -143,7 +142,7 @@ public class ApartmentInfoServiceImpl extends ServiceImpl<ApartmentInfoMapper, A
         //1.查询公寓信息
         ApartmentInfo apartmentInfo = this.getById(id);
         //2、查询图片列表
-        List<GraphVo> graphVoList = graphInfoMapper.selectListByItemTypeAndId(ItemType.APARTMENT,id);
+        List<GraphVo> graphVoList = graphInfoMapper.selectListByItemTypeAndItemId(ItemType.APARTMENT,id);
         //3、查询标签列表
         List<LabelInfo> labelInfoList = labelInfoMapper.selectListByApartmentId(id);
         //4、查询配套列表

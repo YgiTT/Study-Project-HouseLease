@@ -8,4 +8,6 @@ import java.util.List;
 public interface LabelInfoMapper extends BaseMapper<LabelInfo> {
 
     List<LabelInfo> selectListByApartmentId(Long apartmentId);
+
+    List<LabelInfo> selectListByRoomId(Long roomId);
 }

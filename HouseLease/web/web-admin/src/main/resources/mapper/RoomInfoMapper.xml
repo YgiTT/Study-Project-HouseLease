@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.lease.web.admin.mapper.RoomInfoMapper">
+
+    <resultMap id="RoomItemVoMap" type="com.study.lease.web.admin.vo.room.RoomItemVo" autoMapping="true">
+        <id property="id" column="id"/>
+        <association property="apartmentInfo" javaType="com.study.lease.model.entity.ApartmentInfo" autoMapping="true">
+            <id property="id" column="apart_id"></id>
+            <result property="isRelease" column="apart_is_relase"/>
+        </association>
+    </resultMap>
+
+
+    <select id="pageRoomItemByQuery" resultMap="RoomItemVoMap">
+        select
+            ri.id,ri.room_number ,ri.rent,ri.apartment_id ,ri.is_release
+            ,la.room_id is not null as is_check_in
+            ,la.lease_end_date
+            ,ai.id as apart_id
+            ,ai.name,ai.introduction ,ai.district_id ,ai.district_name ,ai.city_id
+            ,ai.city_name ,ai.province_id
+            ,ai.province_name ,ai.address_detail ,ai.latitude ,ai.longitude ,ai.phone
+            ,ai.is_release  as apart_is_relase
+        from room_info ri
+            left join lease_agreement la
+            on ri.id = la.id
+                and la.is_deleted = 0
+                and la.status in (2,5)
+            left join apartment_info ai
+                on ri.apartment_id  = ai.id
+                and ai.is_deleted = 0
+        <where>
+            ri.is_deleted = 0
+            <if test="queryVo.provinceId != null">
+                ai.province_id = #{queryVo.provinceId}
+            </if>
+            <if test="queryVo.cityId != null">
+                ai.city_id = #{queryVo.cityId}
+            </if>
+            <if test="queryVo.districtId != null">
+                ai.district_id = #{queryVo.districtId}
+            </if>
+            <if test="queryVo.apartmentId != null">
+                ai.apartment_id = #{queryVo.apartmentId}
+            </if>
+        </where>
+
+
+
+
+
+    </select>
+
+
+</mapper>
